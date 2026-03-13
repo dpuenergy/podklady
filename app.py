@@ -19,10 +19,10 @@ STATUS_OPTIONS = [
 ]
 
 RELEVANCE_EXPLANATION = {
-    "P": "🔴 Povinné",
-    "D": "🟡 Doporučené",
-    "V": "🟢 Volitelné",
-    "-": "⚪ Irelevantní",
+    "P": "Povinné",
+    "D": "Doporučené",
+    "V": "Volitelné",
+    "-": "Irelevantní",
 }
 
 
@@ -36,6 +36,73 @@ BLOCK_DEFINITIONS = {
     7: "Ekonomika, finance a dotační souvislosti",
 }
 
+
+
+
+SERVICE_ROOT_NAMES = {
+    "EA": "DPU_EA",
+    "PEA": "DPU_PLAN_EA",
+    "SPU": "DPU_SPU",
+    "EP": "DPU_EP",
+    "PENB": "DPU_PENB",
+    "ES": "DPU_ES",
+    "FVE": "DPU_FVE",
+    "KE": "DPU_KE",
+    "EM": "DPU_EM",
+    "MEK": "DPU_MEK",
+    "SP": "DPU_SP",
+    "DB": "DPU_DB",
+}
+
+ITEM_FOLDER_SHORT_NAMES = {
+    "1": "1.1_Smlouva_zadani",
+    "2": "1.2_Prehled_objektu",
+    "3": "1.3_Schvalovani_terminy",
+    "4": "1.4_VZ_pravidla",
+    "5": "1.5_Harmonogram_rozhodnuti",
+    "6": "2.1_Fotodokumentace",
+    "7": "3.1_Faktury_ele",
+    "8": "3.2_Smlouvy_ele",
+    "9": "3.3_15min_ele",
+    "10": "3.4_EAN_parametry",
+    "11": "3.5_Faktury_plyn",
+    "12": "3.6_Smlouvy_plyn",
+    "13": "3.7_Odecty_plyn",
+    "14": "3.8_Faktury_teplo",
+    "15": "3.9_Smlouvy_teplo",
+    "16": "3.10_Odecty_teplo",
+    "17": "3.11_Faktury_voda",
+    "18": "3.12_Mapovani_OM",
+    "19": "3.13_Vyroba_ele",
+    "20": "4.1_Dok_stav",
+    "21": "4.2_Dok_navrh",
+    "22": "4.3_PENB_audity",
+    "23": "4.4_Obalka_zatepleni",
+    "24": "4.5_Okna_dvere",
+    "25": "4.6_Strechy",
+    "26": "4.7_Statika_strechy",
+    "27": "4.8_Stav_poruchy",
+    "28": "5.1_Vytapeni",
+    "29": "5.2_Chlazeni",
+    "30": "5.3_VZT",
+    "31": "5.4_TUV",
+    "32": "5.5_Zalozni_zdroje",
+    "33": "5.6_FVE_zdroje",
+    "34": "5.7_Trafostanice",
+    "35": "5.8_MaR_EnMS",
+    "36": "5.9_Voda",
+    "37": "5.10_Osvetleni",
+    "38": "5.11_PBR",
+    "39": "5.12_Spotrebice",
+    "40": "6.1_Provozni_rezim",
+    "41": "6.2_Obsazenost_vyuziti",
+    "42": "6.3_Provozni_problemy",
+    "43": "6.4_Plan_zmen",
+    "44": "6.5_Doplnujici_provoz",
+    "45": "7.1_Historie_investic",
+    "46": "7.2_Rozpocty_finance",
+    "47": "7.3_Dotace",
+}
 
 BLOCK_README_TEXTS = {
     1: (
@@ -495,17 +562,17 @@ DOPORUČENÍ:
 """
 
 BLOCK_FOLDERS = {
-    1: "01_ZADANI_A_ORGANIZACE",
-    2: "02_FOTODOKUMENTACE",
-    3: "03_ENERGETICKA_DATA",
-    4: "04_STAVEBNI_A_OBJEKTOVE_TECHNICKE_PODKLADY",
-    5: "05_TECHNICKE_PODKLADY_TECHNOLOGII_A_ENERGETICKYCH_ZARIZENI",
-    6: "06_PROVOZNI_INFORMACE",
-    7: "07_EKONOMIKA_FINANCE_A_DOTACE",
+    1: "01_ZADANI",
+    2: "02_FOTO",
+    3: "03_ENERG_DATA",
+    4: "04_STAVEBNI",
+    5: "05_TECHNOLOGIE",
+    6: "06_PROVOZ",
+    7: "07_EKONOMIKA",
 }
 
 BLOCK_READMES = {
-    1: """NÁZEV: 01_ZADANI_A_ORGANIZACE
+    1: """NÁZEV: 01_ZADANI
 
 K ČEMU SLOŽKA SLOUŽÍ:
 Do této složky patří dokumenty, ze kterých je patrné zadání služby, rozsah řešených objektů, interní schvalovací proces, pravidla veřejných zakázek a harmonogram projektu.
@@ -521,7 +588,7 @@ CO TYPICKY NAHRÁT:
 POZNÁMKA:
 Kontaktní osoby k jednotlivým objektům vyplňte primárně do souboru PREHLED_OBJEKTU.xlsx.
 """,
-    2: """NÁZEV: 02_FOTODOKUMENTACE
+    2: """NÁZEV: 02_FOTO
 
 K ČEMU SLOŽKA SLOUŽÍ:
 Do této složky patří fotodokumentace objektů, technických místností, střech, technologií a problematických míst.
@@ -533,7 +600,7 @@ CO TYPICKY NAHRÁT:
 - fotografie vad, poruch nebo problematických detailů
 - fotografie technologií
 """,
-    3: """NÁZEV: 03_ENERGETICKA_DATA
+    3: """NÁZEV: 03_ENERG_DATA
 
 K ČEMU SLOŽKA SLOUŽÍ:
 Do této složky patří energetická data, zejména faktury, smlouvy, průběhová data, odečty a přehledy odběrných míst.
@@ -548,7 +615,7 @@ CO TYPICKY NAHRÁT:
 - mapování odběrných míst k objektům
 - data o vlastní výrobě elektřiny
 """,
-    4: """NÁZEV: 04_STAVEBNI_A_OBJEKTOVE_TECHNICKE_PODKLADY
+    4: """NÁZEV: 04_STAVEBNI
 
 K ČEMU SLOŽKA SLOUŽÍ:
 Do této složky patří stavební a objektové technické podklady ke stávajícímu a případně i plánovanému stavu objektu.
@@ -563,7 +630,7 @@ CO TYPICKY NAHRÁT:
 - statické posouzení střechy
 - informace o stavebním stavu a známých poruchách
 """,
-    5: """NÁZEV: 05_TECHNICKE_PODKLADY_TECHNOLOGII_A_ENERGETICKYCH_ZARIZENI
+    5: """NÁZEV: 05_TECHNOLOGIE
 
 K ČEMU SLOŽKA SLOUŽÍ:
 Do této složky patří technické podklady k vytápění, chlazení, vzduchotechnice, přípravě teplé vody, FVE, trafostanicím, MaR / EnMS a dalším technologiím.
@@ -580,7 +647,7 @@ CO TYPICKY NAHRÁT:
 - technické podklady k vodě, osvětlení nebo PBŘ
 - přehled významných spotřebičů
 """,
-    6: """NÁZEV: 06_PROVOZNI_INFORMACE
+    6: """NÁZEV: 06_PROVOZ
 
 K ČEMU SLOŽKA SLOUŽÍ:
 Do této složky patří informace o reálném provozu objektu, jeho obsazenosti, uživatelských problémech a plánovaných změnách.
@@ -592,7 +659,7 @@ CO TYPICKY NAHRÁT:
 - informace o plánovaných změnách a rekonstrukcích
 - další doplňující provozní informace
 """,
-    7: """NÁZEV: 07_EKONOMIKA_FINANCE_A_DOTACE
+    7: """NÁZEV: 07_EKONOMIKA
 
 K ČEMU SLOŽKA SLOUŽÍ:
 Do této složky patří informace o historii investic, finančních možnostech klienta a případných dotacích nebo podpůrných programech.
@@ -606,8 +673,10 @@ CO TYPICKY NAHRÁT:
 }
 
 
+
 def format_readme_for_ui(text: str) -> str:
     return text.replace("\r\n", "\n").strip()
+
 
 def parse_query_params() -> Dict[str, str]:
     params = st.query_params
@@ -626,6 +695,32 @@ def safe_name(text: str) -> str:
     out = "".join("_" if ch in bad else ch for ch in str(text).strip())
     out = out.replace(" ", "_")
     return out or "PROJEKT"
+
+
+def normalize_text(text: str) -> str:
+    import unicodedata
+    text = "" if text is None else str(text)
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    return text.strip().lower()
+
+def get_service_root_folder(service_name: str) -> str:
+    service_short = SERVICES[service_name]["short"]
+    return SERVICE_ROOT_NAMES.get(service_short, f"DPU_{service_short}")
+
+
+def get_item_folder_name(item_id: str) -> str:
+    return ITEM_FOLDER_SHORT_NAMES.get(str(item_id), safe_name(str(item_id)))
+
+
+def shorten_object_folder_name(obj_no: str, obj_label: str, max_label_length: int = 28) -> str:
+    cleaned = safe_name(obj_label)
+    if len(cleaned) > max_label_length:
+        cleaned = cleaned[:max_label_length].rstrip("_")
+    if obj_no:
+        return f"{obj_no}_{cleaned}" if cleaned else str(obj_no)
+    return cleaned or "OBJEKT"
+
 
 
 def dataframe_to_excel_bytes(
@@ -650,7 +745,7 @@ def dataframe_to_excel_bytes(
 
     ws.freeze_panes = freeze_cell
     ws.auto_filter.ref = ws.dimensions
-    ws.row_dimensions[1].height = 30
+    ws.row_dimensions[1].height = 36
 
     for col_cells in ws.columns:
         max_len = 0
@@ -677,7 +772,8 @@ def dataframe_to_excel_bytes(
             dv.errorTitle = "Neplatná hodnota"
             dv.error = "Použijte jednu z povolených hodnot."
             ws.add_data_validation(dv)
-            dv.add(f"{col_letter}2:{col_letter}500")
+            dv.add(f"{col_letter}2:{col_letter}1000")
+
     output = io.BytesIO()
     wb.save(output)
     output.seek(0)
@@ -704,164 +800,200 @@ def build_service_dataframe(service_name: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+OBJECT_OVERVIEW_HEADERS = [
+    "Pořadové číslo objektu",
+    "Název objektu",
+    "Adresa objektu / parcelní číslo",
+    "Vlastník objektu",
+    "Provozovatel objektu",
+    "Využívaná část objektu (odhad v %)",
+    "Jméno a příjmení kontaktu",
+    "Funkce",
+    "Telefon",
+    "E-mail",
+    "Majetkoprávní vztah",
+    "Památková ochrana / správní omezení",
+    "Poznámka",
+]
+
+
+NORMALIZED_OBJECT_COLUMN_MAP = {
+    "poradove cislo objektu": "Pořadové číslo objektu",
+    "poradove_cislo_objektu": "Pořadové číslo objektu",
+    "nazev objektu": "Název objektu",
+    "nazev_objektu": "Název objektu",
+    "objekt": "Název objektu",
+    "adresa objektu / parcelni cislo": "Adresa objektu / parcelní číslo",
+    "adresa objektu": "Adresa objektu / parcelní číslo",
+    "adresa": "Adresa objektu / parcelní číslo",
+    "parcelni cislo": "Adresa objektu / parcelní číslo",
+    "vlastnik objektu": "Vlastník objektu",
+    "vlastnik": "Vlastník objektu",
+    "provozovatel objektu": "Provozovatel objektu",
+    "provozovatel": "Provozovatel objektu",
+    "vyuzivana cast objektu (odhad v %)": "Využívaná část objektu (odhad v %)",
+    "vyuzivana cast objektu": "Využívaná část objektu (odhad v %)",
+    "vyuziti v %": "Využívaná část objektu (odhad v %)",
+    "jmeno a prijmeni kontaktu": "Jméno a příjmení kontaktu",
+    "kontakt": "Jméno a příjmení kontaktu",
+    "funkce": "Funkce",
+    "telefon": "Telefon",
+    "e-mail": "E-mail",
+    "email": "E-mail",
+    "majetkopravni vztah": "Majetkoprávní vztah",
+    "pamatkova ochrana / spravni omezeni": "Památková ochrana / správní omezení",
+    "spravni omezeni": "Památková ochrana / správní omezení",
+    "poznamka": "Poznámka",
+}
+
+
+def coerce_object_df(df: pd.DataFrame) -> pd.DataFrame:
+    out = pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
+    normalized_cols = {normalize_text(c): c for c in df.columns}
+    for norm_name, target in NORMALIZED_OBJECT_COLUMN_MAP.items():
+        if norm_name in normalized_cols:
+            out[target] = df[normalized_cols[norm_name]]
+
+    if "Název objektu" not in out.columns or out["Název objektu"].replace("", pd.NA).isna().all():
+        cols = list(df.columns)
+        if len(cols) >= 1:
+            out["Název objektu"] = df[cols[0]]
+        if len(cols) >= 2:
+            out["Adresa objektu / parcelní číslo"] = df[cols[1]]
+
+    if "Pořadové číslo objektu" not in out.columns or out["Pořadové číslo objektu"].replace("", pd.NA).isna().all():
+        out["Pořadové číslo objektu"] = range(1, len(df) + 1)
+
+    for header in OBJECT_OVERVIEW_HEADERS:
+        if header not in out.columns:
+            out[header] = ""
+
+    out = out[OBJECT_OVERVIEW_HEADERS].copy().fillna("")
+    return out
+
+
+def parse_uploaded_objects(uploaded_file) -> pd.DataFrame:
+    if uploaded_file is None:
+        return pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
+    name = uploaded_file.name.lower()
+    if name.endswith(".csv"):
+        df = pd.read_csv(uploaded_file)
+    else:
+        df = pd.read_excel(uploaded_file)
+    return coerce_object_df(df)
+
+
+def parse_manual_objects(text: str) -> pd.DataFrame:
+    rows = []
+    lines = [line.strip() for line in (text or "").splitlines() if line.strip()]
+    for idx, line in enumerate(lines, start=1):
+        parts = [p.strip() for p in line.split("|")]
+        row = {h: "" for h in OBJECT_OVERVIEW_HEADERS}
+        row["Pořadové číslo objektu"] = idx
+        row["Název objektu"] = parts[0] if len(parts) > 0 else ""
+        row["Adresa objektu / parcelní číslo"] = parts[1] if len(parts) > 1 else ""
+        row["Vlastník objektu"] = parts[2] if len(parts) > 2 else ""
+        row["Provozovatel objektu"] = parts[3] if len(parts) > 3 else ""
+        rows.append(row)
+    return pd.DataFrame(rows, columns=OBJECT_OVERVIEW_HEADERS) if rows else pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
+
+
+def get_object_input_df(uploaded_file, manual_text: str) -> pd.DataFrame:
+    uploaded_df = parse_uploaded_objects(uploaded_file) if uploaded_file is not None else pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
+    if not uploaded_df.empty:
+        return uploaded_df
+    manual_df = parse_manual_objects(manual_text)
+    if not manual_df.empty:
+        return manual_df
+    return pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
+
+
 def build_checklist_xlsx(service_df: pd.DataFrame, service_name: str) -> bytes:
     export_df = service_df.copy()
     export_df["Stav"] = "Chybí"
     export_df["Poznámka"] = ""
-
-    export_df = export_df[
-        [
-            "display_number",
-            "block_name",
-            "name",
-            "description",
-            "relevance_text",
-            "Stav",
-            "Poznámka",
-        ]
-    ].rename(
-        columns={
-            "display_number": "Číslo položky",
-            "block_name": "Blok",
-            "name": "Položka",
-            "description": "Co se očekává",
-            "relevance_text": "Relevance",
-        }
-    )
-
+    export_df = export_df[["display_number", "block_name", "name", "description", "relevance_text", "Stav", "Poznámka"]].rename(columns={"display_number": "Číslo položky", "block_name": "Blok", "name": "Položka", "description": "Co se očekává", "relevance_text": "Relevance"})
     dropdowns = {"Stav": STATUS_OPTIONS}
     return dataframe_to_excel_bytes(export_df, "Checklist", dropdowns=dropdowns, freeze_cell="A2")
 
 
-def build_prehled_objektu_xlsx(service_df: pd.DataFrame) -> bytes:
-    base_headers = [
-        "Pořadové číslo objektu",
-        "Název objektu",
-        "Adresa objektu / parcelní číslo",
-        "Vlastník objektu",
-        "Provozovatel objektu",
-        "Využívaná část objektu (odhad v %)",
-        "Jméno a příjmení kontaktu",
-        "Funkce",
-        "Telefon",
-        "E-mail",
-        "Majetkoprávní vztah",
-        "Památková ochrana / správní omezení",
-        "Poznámka",
-    ]
+def build_prehled_objektu_xlsx(service_df: pd.DataFrame, object_df: pd.DataFrame | None = None, object_mode: bool = False) -> bytes:
+    rows_df = object_df.copy() if object_df is not None and not object_df.empty else pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
+    if rows_df.empty:
+        rows = []
+        for i in range(1, 4):
+            row = {h: "" for h in OBJECT_OVERVIEW_HEADERS}
+            row["Pořadové číslo objektu"] = i
+            rows.append(row)
+        rows_df = pd.DataFrame(rows, columns=OBJECT_OVERVIEW_HEADERS)
 
-    item_columns = [
-        f"{row['display_number']} | {row['name']}"
-        for _, row in service_df.iterrows()
-    ]
+    relevant_df = service_df[service_df["block"].isin([2, 3, 4, 5, 6])].copy() if object_mode else service_df.copy()
+    item_columns = [f"{row['display_number']} | {row['name']}" for _, row in relevant_df.iterrows()]
+    export_df = rows_df.copy()
+    for col in item_columns:
+        if col not in export_df.columns:
+            export_df[col] = "Chybí"
 
-    headers = base_headers + item_columns
-
-    rows = []
-    for i in range(1, 4):
-        rows.append(
-            [i, "", "", "", "", "", "", "", "", "", "", "", ""]
-            + ["Chybí"] * len(item_columns)
-        )
-
-    df = pd.DataFrame(rows, columns=headers)
-
-    dropdown_cols = {
-        col: ["Nahráno", "Chybí", "Není k dispozici", "Irelevantní"]
-        for col in item_columns
-    }
-
-    return dataframe_to_excel_bytes(
-        df,
-        "Přehled_objektů",
-        dropdowns=dropdown_cols,
-        freeze_cell="D2",
-    )
+    export_df = export_df[OBJECT_OVERVIEW_HEADERS + item_columns]
+    dropdown_cols = {col: ["Nahráno", "Chybí", "Není k dispozici", "Irelevantní"] for col in item_columns}
+    return dataframe_to_excel_bytes(export_df, "Přehled_objektů", dropdowns=dropdown_cols, freeze_cell="D2")
 
 
-def build_relevance_matrix_xlsx() -> bytes:
-    rows = []
-    service_shorts = [cfg["short"] for cfg in SERVICES.values()]
-
-    short_to_name = {cfg["short"]: name for name, cfg in SERVICES.items()}
-
-    for item in MASTER_ITEMS:
-        row = {
-            "ID": str(item["id"]),
-            "Číslo položky": f"{item['block']}.{item['item_no']}",
-            "Blok": BLOCK_DEFINITIONS[item["block"]],
-            "Položka": item["name"],
-        }
-        for short in service_shorts:
-            row[short] = RELEVANCE_MATRIX.get(str(item["id"]), {}).get(short, "-")
-        rows.append(row)
-
-    df = pd.DataFrame(rows)
-
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Matrice relevance"
-
-    for c_idx, col in enumerate(df.columns, start=1):
-        cell = ws.cell(row=1, column=c_idx, value=col)
-        cell.font = Font(bold=True)
-        cell.fill = PatternFill("solid", fgColor="D9E2F3")
-        cell.alignment = Alignment(wrap_text=True, horizontal="center", vertical="center")
-
-    for r_idx, row in enumerate(df.itertuples(index=False), start=2):
-        for c_idx, value in enumerate(row, start=1):
-            ws.cell(row=r_idx, column=c_idx, value=value)
-
-    ws.freeze_panes = "A2"
-    ws.auto_filter.ref = ws.dimensions
-
-    for col_cells in ws.columns:
-        max_len = 0
-        col_letter = col_cells[0].column_letter
-        for cell in col_cells:
-            val = "" if cell.value is None else str(cell.value)
-            max_len = max(max_len, len(val))
-        ws.column_dimensions[col_letter].width = min(max(max_len + 2, 12), 35)
-
-    legend = wb.create_sheet("Legenda")
-    legend_rows = [
-        ("P", "Povinné"),
-        ("D", "Doporučené"),
-        ("V", "Volitelné"),
-        ("-", "Irelevantní"),
-    ]
-    legend["A1"] = "Značka"
-    legend["B1"] = "Význam"
-    legend["A1"].font = Font(bold=True)
-    legend["B1"].font = Font(bold=True)
-    for i, (a, b) in enumerate(legend_rows, start=2):
-        legend[f"A{i}"] = a
-        legend[f"B{i}"] = b
-
-    services_ws = wb.create_sheet("Služby")
-    services_ws["A1"] = "Zkratka"
-    services_ws["B1"] = "Služba"
-    services_ws["A1"].font = Font(bold=True)
-    services_ws["B1"].font = Font(bold=True)
-    for i, short in enumerate(service_shorts, start=2):
-        services_ws[f"A{i}"] = short
-        services_ws[f"B{i}"] = short_to_name[short]
-
-    output = io.BytesIO()
-    wb.save(output)
-    output.seek(0)
-    return output.getvalue()
+def build_centralni_prehled_xlsx(service_df: pd.DataFrame, service_name: str) -> bytes:
+    central_df = service_df[service_df["block"].isin([1, 7])].copy()
+    item_columns = [f"{row['display_number']} | {row['name']}" for _, row in central_df.iterrows()]
+    row = {"Služba": service_name, "Název zákazníka": "", "Číslo projektu v Caflou": "", "Název projektu v Caflou": "", "Poznámka": ""}
+    for col in item_columns:
+        row[col] = "Chybí"
+    df = pd.DataFrame([row])
+    ordered_cols = ["Služba", "Název zákazníka", "Číslo projektu v Caflou", "Název projektu v Caflou", "Poznámka"] + item_columns
+    dropdown_cols = {col: ["Nahráno", "Chybí", "Není k dispozici", "Irelevantní"] for col in item_columns}
+    return dataframe_to_excel_bytes(df[ordered_cols], "Centrální_podklady", dropdowns=dropdown_cols, freeze_cell="F2")
 
 
-def build_zip_package(
-    customer_name: str,
-    project_code: str,
-    project_name: str,
-    checklist_bytes: bytes,
-    prehled_objektu_bytes: bytes,
-    selected_df: pd.DataFrame,
-) -> bytes:
-    project_folder = safe_name(f"{project_code}_{project_name}_{customer_name}_PODKLADY_DPU_ENERGY")
+OBJECT_MODE_ROOT_README = """NÁZEV: Hlavní složka projektu – podklady pro službu DPU ENERGY
+
+K ČEMU TATO SLOŽKA SLOUŽÍ:
+Tato varianta slouží pro přehledné ukládání podkladů po jednotlivých objektech.
+
+JAK SLOŽKU POUŽÍVAT:
+- centrální dokumenty nahrávejte do složek 01_ZADANI_A_ORGANIZACE a 02_EKONOMIKA_FINANCE_A_DOTACE
+- objektové podklady nahrávejte do složky 03_OBJEKTY, kde má každý objekt svou vlastní podsložku
+- uvnitř každého objektu jsou tematické bloky 01 až 05
+- pokud si nejste jistí, kam dokument patří, uložte jej do složky 99_ARCHIV_NEZARAZENO
+"""
+
+OBJECTS_FOLDER_README = """NÁZEV: 03_OBJEKTY
+
+K ČEMU SLOŽKA SLOUŽÍ:
+Tato složka obsahuje jednotlivé objekty. Každý objekt má vlastní podsložku a uvnitř ní bloky 01 až 05 pro objektové podklady.
+
+JAK SLOŽKU POUŽÍVAT:
+- pro každý objekt používejte samostatnou složku
+- do objektové složky nahrávejte pouze podklady vztahující se ke konkrétnímu objektu
+- centrální dokumenty patří mimo tuto složku do 01 nebo 02 na hlavní úrovni
+"""
+
+OBJECT_MODE_BLOCK_FOLDERS = {
+    2: "01_FOTO",
+    3: "02_ENERG_DATA",
+    4: "03_STAVEBNI",
+    5: "04_TECHNOLOGIE",
+    6: "05_PROVOZ",
+}
+
+
+def get_block_intro(block_no: int) -> str:
+    raw = format_readme_for_ui(BLOCK_READMES.get(block_no, BLOCK_README_TEXTS.get(block_no, "")))
+    lines = [line.strip() for line in raw.splitlines() if line.strip()]
+    for idx, line in enumerate(lines):
+        if line.startswith("K ČEMU SLOŽKA SLOUŽÍ:") and idx + 1 < len(lines):
+            return lines[idx + 1]
+    return BLOCK_README_TEXTS.get(block_no, "")
+
+
+def build_zip_package(customer_name: str, project_code: str, project_name: str, service_name: str, checklist_bytes: bytes, prehled_objektu_bytes: bytes, selected_df: pd.DataFrame, structure_mode: str, centralni_prehled_bytes: bytes | None = None, object_df: pd.DataFrame | None = None) -> bytes:
+    project_folder = get_service_root_folder(service_name)
 
     def write_dir(zf: zipfile.ZipFile, path: str) -> None:
         directory = path if path.endswith("/") else f"{path}/"
@@ -870,20 +1002,57 @@ def build_zip_package(
     output = io.BytesIO()
     with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as zf:
         write_dir(zf, project_folder)
-        zf.writestr(f"{project_folder}/README.txt", ROOT_README_TEXT)
+        zf.writestr(f"{project_folder}/README.txt", OBJECT_MODE_ROOT_README if structure_mode == "object" else ROOT_README_TEXT)
         zf.writestr(f"{project_folder}/KLIC_POJMENOVANI_SOUBORU.txt", NAMING_KEY_TEXT)
 
-        for block_no, folder in BLOCK_FOLDERS.items():
-            write_dir(zf, f"{project_folder}/{folder}")
-            zf.writestr(f"{project_folder}/{folder}/README.txt", BLOCK_READMES[block_no])
+        if structure_mode == "standard":
+            for block_no, folder in BLOCK_FOLDERS.items():
+                write_dir(zf, f"{project_folder}/{folder}")
+                zf.writestr(f"{project_folder}/{folder}/README.txt", BLOCK_READMES[block_no])
+            for _, row in selected_df.iterrows():
+                block_folder = BLOCK_FOLDERS[int(row["block"])]
+                item_folder = get_item_folder_name(str(row["id"]))
+                write_dir(zf, f"{project_folder}/{block_folder}/{item_folder}")
+            zf.writestr(f"{project_folder}/{BLOCK_FOLDERS[1]}/CHECKLIST_PODKLADU.xlsx", checklist_bytes)
+            zf.writestr(f"{project_folder}/{BLOCK_FOLDERS[1]}/PREHLED_OBJEKTU.xlsx", prehled_objektu_bytes)
+        else:
+            root1 = "01_ZADANI"
+            root2 = "02_EKONOMIKA"
+            root3 = "03_OBJEKTY"
+            write_dir(zf, f"{project_folder}/{root1}")
+            write_dir(zf, f"{project_folder}/{root2}")
+            write_dir(zf, f"{project_folder}/{root3}")
+            zf.writestr(f"{project_folder}/{root1}/README.txt", BLOCK_READMES[1])
+            zf.writestr(f"{project_folder}/{root2}/README.txt", BLOCK_READMES[7])
+            zf.writestr(f"{project_folder}/{root3}/README.txt", OBJECTS_FOLDER_README)
+            for _, row in selected_df[selected_df["block"] == 1].iterrows():
+                item_folder = get_item_folder_name(str(row["id"]))
+                write_dir(zf, f"{project_folder}/{root1}/{item_folder}")
+            for _, row in selected_df[selected_df["block"] == 7].iterrows():
+                item_folder = get_item_folder_name(str(row["id"]))
+                write_dir(zf, f"{project_folder}/{root2}/{item_folder}")
 
-        for _, row in selected_df.iterrows():
-            block_folder = BLOCK_FOLDERS[int(row["block"])]
-            item_folder = safe_name(f"{row['display_number']}_{row['name']}")
-            write_dir(zf, f"{project_folder}/{block_folder}/{item_folder}")
+            object_rows = object_df.copy() if object_df is not None and not object_df.empty else pd.DataFrame([{"Pořadové číslo objektu": 1, "Název objektu": "OBJEKT_01"}])
+            object_related = selected_df[selected_df["block"].isin([2, 3, 4, 5, 6])].copy()
+            for _, obj in object_rows.iterrows():
+                obj_label = str(obj.get("Název objektu", "")).strip() or f"OBJEKT_{obj.get('Pořadové číslo objektu', '')}"
+                obj_no = str(obj.get("Pořadové číslo objektu", "")).strip()
+                obj_folder_name = shorten_object_folder_name(obj_no, obj_label)
+                object_root = f"{project_folder}/{root3}/{obj_folder_name}"
+                write_dir(zf, object_root)
+                for block_no, folder_name in OBJECT_MODE_BLOCK_FOLDERS.items():
+                    block_path = f"{object_root}/{folder_name}"
+                    write_dir(zf, block_path)
+                    zf.writestr(f"{block_path}/README.txt", BLOCK_READMES[block_no])
+                for _, row in object_related.iterrows():
+                    subblock = OBJECT_MODE_BLOCK_FOLDERS[int(row["block"])]
+                    item_folder = get_item_folder_name(str(row["id"]))
+                    write_dir(zf, f"{object_root}/{subblock}/{item_folder}")
 
-        zf.writestr(f"{project_folder}/01_ZADANI_A_ORGANIZACE/CHECKLIST_PODKLADU.xlsx", checklist_bytes)
-        zf.writestr(f"{project_folder}/01_ZADANI_A_ORGANIZACE/PREHLED_OBJEKTU.xlsx", prehled_objektu_bytes)
+            zf.writestr(f"{project_folder}/{root1}/CHECKLIST_PODKLADU.xlsx", checklist_bytes)
+            zf.writestr(f"{project_folder}/{root1}/PREHLED_OBJEKTU.xlsx", prehled_objektu_bytes)
+            if centralni_prehled_bytes is not None:
+                zf.writestr(f"{project_folder}/{root1}/PREHLED_CENTRALNICH_PODKLADU.xlsx", centralni_prehled_bytes)
 
         write_dir(zf, f"{project_folder}/99_ARCHIV_NEZARAZENO")
 
@@ -893,7 +1062,6 @@ def build_zip_package(
 
 st.set_page_config(page_title="Podklady pro studie DPU ENERGY", layout="wide")
 st.title("Podklady pro studie DPU ENERGY")
-
 query = parse_query_params()
 
 col1, col2, col3 = st.columns(3)
@@ -905,54 +1073,52 @@ with col3:
     project_name = st.text_input("Název projektu v Caflou", value=query.get("projectName", ""))
 
 service_name = st.selectbox("Typ služby", list(SERVICES.keys()))
-service_cfg = SERVICES[service_name]
-
+structure_mode_label = st.radio("Varianta struktury sdíleného uložiště", ["Neznáme rozsah objektů", "Máme seznam objektů"])
+structure_mode = "object" if "seznam" in structure_mode_label.lower() else "standard"
 service_df = build_service_dataframe(service_name)
+
+object_input_df = pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
+if structure_mode == "object":
+    st.subheader("Seznam objektů pro objektovou variantu")
+    manual_objects = st.text_area(
+        "Pro zadání objektů vyplň na samostatné řádky název objektu a případně jeho adresu ve formátu Název objektu | Adresa s tím, že pro uložení je třeba stisknout na klávesnici kombinaci CTRL + ENTER.",
+        height=140,
+        placeholder="Název objektu A | Adresa objektu A\nNázev objektu B | Adresa objektu B"
+    )
+    object_input_df = parse_manual_objects(manual_objects)
+
+    if not object_input_df.empty:
+        st.dataframe(object_input_df, use_container_width=True, height=220)
+    else:
+        st.info("Zatím nemáš zadaný seznam objektů. Vygeneruje se šablona s prázdnými řádky.")
 
 st.subheader("Seznam podkladů pro danou službu")
 st.caption("Odškrtni položky, které po klientovi z nějakého důvodu nechceš požadovat.")
 
 selected_rows = []
-
 for block_no in sorted(service_df["block"].unique()):
     block_df = service_df[service_df["block"] == block_no].copy()
     block_name = BLOCK_DEFINITIONS[block_no]
     block_help = format_readme_for_ui(BLOCK_READMES.get(block_no, BLOCK_README_TEXTS.get(block_no, "")))
-
     with st.container(border=True):
         st.markdown(f"### {block_no}. {block_name}")
-
+        intro_line = get_block_intro(block_no)
+        if intro_line:
+            st.caption(intro_line)
         if block_help:
-            intro_line = block_help.split("\n", 1)[0].strip()
-            if intro_line:
-                st.caption(intro_line)
-
             with st.expander("Co sem patří"):
-                st.markdown(block_help.replace("\n", "  \n"))
-
-        for i, row in block_df.iterrows():
-            label = f"{row['display_number']} | {row['name']} | {row['relevance_text']}"
-            checked = st.checkbox(label, value=True, key=f"chk_{i}")
-            if checked:
-                selected_rows.append(i)
+                for i, row in block_df.iterrows():
+                    label = f"{row['display_number']} | {row['name']} | {row['relevance_text']}"
+                    checked = st.checkbox(label, value=True, key=f"chk_{i}")
+                    if checked:
+                        selected_rows.append(i)
 
 selected_df = service_df.loc[selected_rows].copy()
-
 if st.button("Zobrazit náhled checklistu"):
     if selected_df.empty:
         st.warning("Nemáš vybranou žádnou položku.")
     else:
-        preview_df = selected_df[
-            ["display_number", "block_name", "name", "description", "relevance_text"]
-        ].rename(
-            columns={
-                "display_number": "Číslo položky",
-                "block_name": "Blok",
-                "name": "Položka",
-                "description": "Co se očekává",
-                "relevance_text": "Relevance",
-            }
-        )
+        preview_df = selected_df[["display_number", "block_name", "name", "description", "relevance_text"]].rename(columns={"display_number": "Číslo položky", "block_name": "Blok", "name": "Položka", "description": "Co se očekává", "relevance_text": "Relevance"})
         st.dataframe(preview_df, use_container_width=True, height=650)
 
 if selected_df.empty:
@@ -960,36 +1126,13 @@ if selected_df.empty:
     st.stop()
 
 checklist_bytes = build_checklist_xlsx(selected_df, service_name)
-prehled_objektu_bytes = build_prehled_objektu_xlsx(service_df)
-zip_bytes = build_zip_package(
-    customer_name=customer_name,
-    project_code=project_code,
-    project_name=project_name,
-    checklist_bytes=checklist_bytes,
-    prehled_objektu_bytes=prehled_objektu_bytes,
-    selected_df=selected_df,
-)
+prehled_objektu_bytes = build_prehled_objektu_xlsx(selected_df, object_input_df, object_mode=(structure_mode == "object"))
+centralni_prehled_bytes = build_centralni_prehled_xlsx(selected_df, service_name) if structure_mode == "object" else None
+zip_bytes = build_zip_package(customer_name=customer_name, project_code=project_code, project_name=project_name, service_name=service_name, checklist_bytes=checklist_bytes, prehled_objektu_bytes=prehled_objektu_bytes, selected_df=selected_df, structure_mode=structure_mode, centralni_prehled_bytes=centralni_prehled_bytes, object_df=object_input_df)
 
 st.subheader("Stažení výstupů")
-
-st.download_button(
-    "Stáhnout CHECKLIST_PODKLADU.xlsx",
-    data=checklist_bytes,
-    file_name=f"CHECKLIST_PODKLADU_{safe_name(project_code)}_{safe_name(SERVICES[service_name]['short'])}.xlsx",
-    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-)
-
-st.download_button(
-    "Stáhnout PREHLED_OBJEKTU.xlsx",
-    data=prehled_objektu_bytes,
-    file_name=f"PREHLED_OBJEKTU_{safe_name(project_code)}.xlsx",
-    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-)
-
-
-st.download_button(
-    "Stáhnout ZIP se složkovou strukturou",
-    data=zip_bytes,
-    file_name=f"{safe_name(project_code)}_PODKLADY_DPU_ENERGY.zip",
-    mime="application/zip",
-)
+st.download_button("Stáhnout CHECKLIST_PODKLADU.xlsx", data=checklist_bytes, file_name=f"CHECKLIST_PODKLADU_{safe_name(project_code)}_{safe_name(SERVICES[service_name]['short'])}.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+st.download_button("Stáhnout PREHLED_OBJEKTU.xlsx", data=prehled_objektu_bytes, file_name=f"PREHLED_OBJEKTU_{safe_name(project_code)}.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+if centralni_prehled_bytes is not None:
+    st.download_button("Stáhnout PREHLED_CENTRALNICH_PODKLADU.xlsx", data=centralni_prehled_bytes, file_name=f"PREHLED_CENTRALNICH_PODKLADU_{safe_name(project_code)}.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+st.download_button("Stáhnout ZIP se složkovou strukturou", data=zip_bytes, file_name=f"{get_service_root_folder(service_name)}.zip", mime="application/zip")
