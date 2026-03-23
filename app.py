@@ -1,4 +1,5 @@
 
+import base64 as _b64
 import io
 import zipfile
 from typing import Dict, List
@@ -1061,6 +1062,22 @@ def build_zip_package(customer_name: str, project_code: str, project_name: str, 
 
 
 st.set_page_config(page_title="Podklady pro studie DPU ENERGY", layout="wide")
+
+# ── Auth ──────────────────────────────────────────────────────────────────────
+_HUB = "https://calm-cocada-79e019.netlify.app"
+_SECRET = "DPU2025int"
+if not st.session_state.get("dpu_auth"):
+    _token = st.query_params.get("access_token", "")
+    try:
+        if ":" + _SECRET in _b64.b64decode(_token).decode():
+            st.session_state["dpu_auth"] = True
+    except Exception:
+        pass
+if not st.session_state.get("dpu_auth"):
+    st.error("Přístup odepřen. Přihlaste se přes [Energy Hub](" + _HUB + ").")
+    st.stop()
+# ─────────────────────────────────────────────────────────────────────────────
+
 st.markdown("""
 <style>
 [data-testid="stHeader"]{display:none!important}
