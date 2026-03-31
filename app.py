@@ -710,6 +710,35 @@ def get_service_root_folder(service_name: str) -> str:
     return SERVICE_ROOT_NAMES.get(service_short, f"DPU_{service_short}")
 
 
+def get_combined_root_folder(service_names: list) -> str:
+    shorts = [SERVICES[n]["short"] for n in service_names]
+    return "DPU_" + "_".join(shorts)
+
+
+def build_combined_service_dataframe(service_names: list) -> pd.DataFrame:
+    """Vrátí položky relevantní pro alespoň jednu z vybraných služeb.
+    Přidá sloupec rel_<SHORT> pro každou službu a sloupec relevance/relevance_text
+    s nejvyšší prioritou napříč službami (P > D > V > -)."""
+    priority = {"P": 0, "D": 1, "V": 2, "-": 3}
+    shorts = [SERVICES[n]["short"] for n in service_names]
+    rows = []
+    for item in MASTER_ITEMS:
+        rel_by_service = {s: RELEVANCE_MATRIX.get(str(item["id"]), {}).get(s, "-") for s in shorts}
+        if all(v == "-" for v in rel_by_service.values()):
+            continue
+        row = item.copy()
+        row["block_name"] = BLOCK_DEFINITIONS[row["block"]]
+        row["display_number"] = f"{row['block']}.{row['item_no']}"
+        row["default_selected"] = True
+        best = min(rel_by_service.values(), key=lambda r: priority.get(r, 3))
+        row["relevance"] = best
+        row["relevance_text"] = RELEVANCE_EXPLANATION[best]
+        for s, rel in rel_by_service.items():
+            row[f"rel_{s}"] = rel
+        rows.append(row)
+    return pd.DataFrame(rows) if rows else pd.DataFrame()
+
+
 def get_item_folder_name(item_id: str) -> str:
     return ITEM_FOLDER_SHORT_NAMES.get(str(item_id), safe_name(str(item_id)))
 
@@ -909,11 +938,18 @@ def get_object_input_df(uploaded_file, manual_text: str) -> pd.DataFrame:
     return pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
 
 
-def build_checklist_xlsx(service_df: pd.DataFrame, service_name: str) -> bytes:
+def build_checklist_xlsx(service_df: pd.DataFrame, service_names: list) -> bytes:
     export_df = service_df.copy()
     export_df["Stav"] = "Chybí"
     export_df["Poznámka"] = ""
-    export_df = export_df[["display_number", "block_name", "name", "description", "relevance_text", "Stav", "Poznámka"]].rename(columns={"display_number": "Číslo položky", "block_name": "Blok", "name": "Položka", "description": "Co se očekává", "relevance_text": "Relevance"})
+    shorts = [SERVICES[n]["short"] for n in service_names]
+    # Rename rel_<SHORT> columns to short codes for readability
+    rel_rename = {f"rel_{s}": s for s in shorts if f"rel_{s}" in export_df.columns}
+    export_df = export_df.rename(columns=rel_rename)
+    base = ["display_number", "block_name", "name", "description"]
+    rel_cols = list(rel_rename.values())
+    final = base + rel_cols + ["Stav", "Poznámka"]
+    export_df = export_df[final].rename(columns={"display_number": "Číslo položky", "block_name": "Blok", "name": "Položka", "description": "Co se očekává"})
     dropdowns = {"Stav": STATUS_OPTIONS}
     return dataframe_to_excel_bytes(export_df, "Checklist", dropdowns=dropdowns, freeze_cell="A2")
 
@@ -940,10 +976,11 @@ def build_prehled_objektu_xlsx(service_df: pd.DataFrame, object_df: pd.DataFrame
     return dataframe_to_excel_bytes(export_df, "Přehled_objektů", dropdowns=dropdown_cols, freeze_cell="D2")
 
 
-def build_centralni_prehled_xlsx(service_df: pd.DataFrame, service_name: str) -> bytes:
+def build_centralni_prehled_xlsx(service_df: pd.DataFrame, service_names: list) -> bytes:
     central_df = service_df[service_df["block"].isin([1, 7])].copy()
     item_columns = [f"{row['display_number']} | {row['name']}" for _, row in central_df.iterrows()]
-    row = {"Služba": service_name, "Název zákazníka": "", "Číslo projektu v Caflou": "", "Název projektu v Caflou": "", "Poznámka": ""}
+    service_label = " + ".join([SERVICES[n]["short"] for n in service_names])
+    row = {"Služba": service_label, "Název zákazníka": "", "Číslo projektu v Caflou": "", "Název projektu v Caflou": "", "Poznámka": ""}
     for col in item_columns:
         row[col] = "Chybí"
     df = pd.DataFrame([row])
@@ -993,8 +1030,8 @@ def get_block_intro(block_no: int) -> str:
     return BLOCK_README_TEXTS.get(block_no, "")
 
 
-def build_zip_package(customer_name: str, project_code: str, project_name: str, service_name: str, checklist_bytes: bytes, prehled_objektu_bytes: bytes, selected_df: pd.DataFrame, structure_mode: str, centralni_prehled_bytes: bytes | None = None, object_df: pd.DataFrame | None = None) -> bytes:
-    project_folder = get_service_root_folder(service_name)
+def build_zip_package(customer_name: str, project_code: str, project_name: str, service_names: list, checklist_bytes: bytes, prehled_objektu_bytes: bytes, selected_df: pd.DataFrame, structure_mode: str, centralni_prehled_bytes: bytes | None = None, object_df: pd.DataFrame | None = None) -> bytes:
+    project_folder = get_combined_root_folder(service_names)
 
     def write_dir(zf: zipfile.ZipFile, path: str) -> None:
         directory = path if path.endswith("/") else f"{path}/"
@@ -1122,10 +1159,28 @@ with col2:
 with col3:
     project_name = st.text_input("Název projektu v Caflou", value=query.get("projectName", ""))
 
-service_name = st.selectbox("Typ služby", list(SERVICES.keys()))
+st.subheader("Typ služby")
+st.caption("Vyber jednu nebo více služeb — vygeneruje se kombinovaná podkladová složka.")
+_service_keys = list(SERVICES.keys())
+_n_cols = 3
+_selected_services = []
+for _i in range(0, len(_service_keys), _n_cols):
+    _row_services = _service_keys[_i:_i + _n_cols]
+    _cols = st.columns(_n_cols)
+    for _col, _svc in zip(_cols, _row_services):
+        with _col:
+            _short = SERVICES[_svc]["short"]
+            if st.checkbox(f"**{_short}** — {_svc}", key=f"svc_{_short}"):
+                _selected_services.append(_svc)
+
+if not _selected_services:
+    st.info("Vyber alespoň jednu službu.")
+    st.stop()
+
+selected_services = _selected_services
 structure_mode_label = st.radio("Varianta struktury sdíleného uložiště", ["Neznáme rozsah objektů", "Máme seznam objektů"])
 structure_mode = "object" if "seznam" in structure_mode_label.lower() else "standard"
-service_df = build_service_dataframe(service_name)
+service_df = build_combined_service_dataframe(selected_services)
 
 object_input_df = pd.DataFrame(columns=OBJECT_OVERVIEW_HEADERS)
 if structure_mode == "object":
@@ -1168,21 +1223,27 @@ if st.button("Zobrazit náhled checklistu"):
     if selected_df.empty:
         st.warning("Nemáš vybranou žádnou položku.")
     else:
-        preview_df = selected_df[["display_number", "block_name", "name", "description", "relevance_text"]].rename(columns={"display_number": "Číslo položky", "block_name": "Blok", "name": "Položka", "description": "Co se očekává", "relevance_text": "Relevance"})
-        st.dataframe(preview_df, use_container_width=True, height=650)
+        _shorts = [SERVICES[n]["short"] for n in selected_services]
+        _rel_rename = {f"rel_{s}": s for s in _shorts if f"rel_{s}" in selected_df.columns}
+        _base_cols = ["display_number", "block_name", "name", "description"]
+        _preview_df = selected_df[_base_cols + list(_rel_rename.keys())].rename(
+            columns={**_rel_rename, "display_number": "Číslo položky", "block_name": "Blok", "name": "Položka", "description": "Co se očekává"}
+        )
+        st.dataframe(_preview_df, use_container_width=True, height=650)
 
 if selected_df.empty:
     st.warning("Vyber alespoň jednu položku seznamu.")
     st.stop()
 
-checklist_bytes = build_checklist_xlsx(selected_df, service_name)
+_combined_short = "_".join(SERVICES[n]["short"] for n in selected_services)
+checklist_bytes = build_checklist_xlsx(selected_df, selected_services)
 prehled_objektu_bytes = build_prehled_objektu_xlsx(selected_df, object_input_df, object_mode=(structure_mode == "object"))
-centralni_prehled_bytes = build_centralni_prehled_xlsx(selected_df, service_name) if structure_mode == "object" else None
-zip_bytes = build_zip_package(customer_name=customer_name, project_code=project_code, project_name=project_name, service_name=service_name, checklist_bytes=checklist_bytes, prehled_objektu_bytes=prehled_objektu_bytes, selected_df=selected_df, structure_mode=structure_mode, centralni_prehled_bytes=centralni_prehled_bytes, object_df=object_input_df)
+centralni_prehled_bytes = build_centralni_prehled_xlsx(selected_df, selected_services) if structure_mode == "object" else None
+zip_bytes = build_zip_package(customer_name=customer_name, project_code=project_code, project_name=project_name, service_names=selected_services, checklist_bytes=checklist_bytes, prehled_objektu_bytes=prehled_objektu_bytes, selected_df=selected_df, structure_mode=structure_mode, centralni_prehled_bytes=centralni_prehled_bytes, object_df=object_input_df)
 
 st.subheader("Stažení výstupů")
-st.download_button("Stáhnout CHECKLIST_PODKLADU.xlsx", data=checklist_bytes, file_name=f"CHECKLIST_PODKLADU_{safe_name(project_code)}_{safe_name(SERVICES[service_name]['short'])}.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+st.download_button("Stáhnout CHECKLIST_PODKLADU.xlsx", data=checklist_bytes, file_name=f"CHECKLIST_PODKLADU_{safe_name(project_code)}_{safe_name(_combined_short)}.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 st.download_button("Stáhnout PREHLED_OBJEKTU.xlsx", data=prehled_objektu_bytes, file_name=f"PREHLED_OBJEKTU_{safe_name(project_code)}.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 if centralni_prehled_bytes is not None:
     st.download_button("Stáhnout PREHLED_CENTRALNICH_PODKLADU.xlsx", data=centralni_prehled_bytes, file_name=f"PREHLED_CENTRALNICH_PODKLADU_{safe_name(project_code)}.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-st.download_button("Stáhnout ZIP se složkovou strukturou", data=zip_bytes, file_name=f"{get_service_root_folder(service_name)}.zip", mime="application/zip")
+st.download_button("Stáhnout ZIP se složkovou strukturou", data=zip_bytes, file_name=f"{get_combined_root_folder(selected_services)}.zip", mime="application/zip")
