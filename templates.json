@@ -1,0 +1,451 @@
+{
+  "services": {
+    "Energetický audit": {
+      "code": "A1_ENERGETICKY_AUDIT",
+      "family": "A",
+      "variant": "A1",
+      "generate_overview": true,
+      "folders": [
+        "00_ADMIN_A_ORGANIZACE",
+        "00_ADMIN_A_ORGANIZACE/01_ZADANI_A_ROZSAH_AUDITU",
+        "00_ADMIN_A_ORGANIZACE/02_KONTAKTY_A_KOMPETENCE",
+        "00_ADMIN_A_ORGANIZACE/03_CILE_A_PRIORITY",
+        "00_ADMIN_A_ORGANIZACE/04_INTERNI_OMEZENI_A_PROCESY",
+        "00_ADMIN_A_ORGANIZACE/05_HARMONOGRAM_A_KOMUNIKACE",
+
+        "01_SEZNAM_OBJEKTU_A_PASPORT",
+        "01_SEZNAM_OBJEKTU_A_PASPORT/01_CENTRALNI_SEZNAM_OBJEKTU",
+        "01_SEZNAM_OBJEKTU_A_PASPORT/02_PASPORTY_OBJEKTU",
+        "01_SEZNAM_OBJEKTU_A_PASPORT/03_PENB_A_STITKY",
+        "01_SEZNAM_OBJEKTU_A_PASPORT/04_FOTODOKUMENTACE",
+
+        "02_ENERGETICKA_DATA",
+        "02_ENERGETICKA_DATA/01_ELEKTRINA",
+        "02_ENERGETICKA_DATA/01_ELEKTRINA/01_FAKTURY",
+        "02_ENERGETICKA_DATA/01_ELEKTRINA/02_SMLOUVY_A_CENIKY",
+        "02_ENERGETICKA_DATA/01_ELEKTRINA/03_PROFILY_15MIN",
+        "02_ENERGETICKA_DATA/01_ELEKTRINA/04_PREHLED_EAN_A_PARAMETRY",
+
+        "02_ENERGETICKA_DATA/02_PLYN",
+        "02_ENERGETICKA_DATA/02_PLYN/01_FAKTURY",
+        "02_ENERGETICKA_DATA/02_PLYN/02_SMLOUVY_A_PARAMETRY",
+        "02_ENERGETICKA_DATA/02_PLYN/03_PROFILY_A_ODECTY",
+
+        "02_ENERGETICKA_DATA/03_TEPLO_CZT",
+        "02_ENERGETICKA_DATA/03_TEPLO_CZT/01_FAKTURY",
+        "02_ENERGETICKA_DATA/03_TEPLO_CZT/02_SMLUVNI_PARAMETRY",
+        "02_ENERGETICKA_DATA/03_TEPLO_CZT/03_PROFILY_ODBERU",
+        "02_ENERGETICKA_DATA/03_TEPLO_CZT/04_PREDAVACI_STANICE",
+
+        "02_ENERGETICKA_DATA/04_VODA",
+        "02_ENERGETICKA_DATA/04_VODA/01_FAKTURY",
+        "02_ENERGETICKA_DATA/04_VODA/02_MERENI_TUV_A_CIRKULACE",
+        "02_ENERGETICKA_DATA/04_VODA/03_UNIKY_A_PROBLEMY",
+
+        "02_ENERGETICKA_DATA/05_CENTRALNI_PREHLEDY",
+
+        "03_TECHNICKE_PODKLADY_BUDOVY",
+        "03_TECHNICKE_PODKLADY_BUDOVY/01_PROJEKTOVA_DOKUMENTACE",
+        "03_TECHNICKE_PODKLADY_BUDOVY/02_OBALKA_BUDOVY",
+        "03_TECHNICKE_PODKLADY_BUDOVY/02_OBALKA_BUDOVY/01_FASADY_A_ZATEPLENI",
+        "03_TECHNICKE_PODKLADY_BUDOVY/02_OBALKA_BUDOVY/02_OKNA_A_DVERE",
+        "03_TECHNICKE_PODKLADY_BUDOVY/02_OBALKA_BUDOVY/03_STRECHY",
+        "03_TECHNICKE_PODKLADY_BUDOVY/02_OBALKA_BUDOVY/04_STAVEBNI_STAV_A_PORUCHY",
+        "03_TECHNICKE_PODKLADY_BUDOVY/03_FVE_POTENCIAL_STRECH",
+
+        "04_TECHNICKE_PODKLADY_TZB",
+        "04_TECHNICKE_PODKLADY_TZB/01_VYTAPENI",
+        "04_TECHNICKE_PODKLADY_TZB/01_VYTAPENI/01_ZDROJE",
+        "04_TECHNICKE_PODKLADY_TZB/01_VYTAPENI/02_SCHEMATA",
+        "04_TECHNICKE_PODKLADY_TZB/01_VYTAPENI/03_REGULACE",
+        "04_TECHNICKE_PODKLADY_TZB/01_VYTAPENI/04_SERVIS_A_REVIZE",
+
+        "04_TECHNICKE_PODKLADY_TZB/02_VETRANI_KLIMATIZACE_CHLAZENI",
+        "04_TECHNICKE_PODKLADY_TZB/02_VETRANI_KLIMATIZACE_CHLAZENI/01_SEZNAM_ZARIZENI",
+        "04_TECHNICKE_PODKLADY_TZB/02_VETRANI_KLIMATIZACE_CHLAZENI/02_TECHNICKE_LISTY",
+        "04_TECHNICKE_PODKLADY_TZB/02_VETRANI_KLIMATIZACE_CHLAZENI/03_SERVIS_A_REVIZE",
+        "04_TECHNICKE_PODKLADY_TZB/02_VETRANI_KLIMATIZACE_CHLAZENI/04_PROVOZNI_PROBLEMY",
+
+        "04_TECHNICKE_PODKLADY_TZB/03_OSVETLENI",
+        "04_TECHNICKE_PODKLADY_TZB/03_OSVETLENI/01_PREHLED_SVITIDEL",
+        "04_TECHNICKE_PODKLADY_TZB/03_OSVETLENI/02_RIZENI",
+        "04_TECHNICKE_PODKLADY_TZB/03_OSVETLENI/03_VELKE_SPOTREBY",
+
+        "04_TECHNICKE_PODKLADY_TZB/04_TUV",
+        "04_TECHNICKE_PODKLADY_TZB/04_TUV/01_ZDROJE_A_ZASOBNIKY",
+        "04_TECHNICKE_PODKLADY_TZB/04_TUV/02_CIRKULACE",
+        "04_TECHNICKE_PODKLADY_TZB/04_TUV/03_PROVOZNI_REZIMY",
+
+        "04_TECHNICKE_PODKLADY_TZB/05_MAR",
+        "04_TECHNICKE_PODKLADY_TZB/05_MAR/01_POPIS_SYSTEMU",
+        "04_TECHNICKE_PODKLADY_TZB/05_MAR/02_EXPORTY_A_TRENDY",
+        "04_TECHNICKE_PODKLADY_TZB/05_MAR/03_SEZNAM_MERENYCH_VELICIN",
+        "04_TECHNICKE_PODKLADY_TZB/05_MAR/04_PRISTUPY_A_ODPOVEDNE_OSOBY",
+
+        "05_PROVOZNI_INFORMACE",
+        "05_PROVOZNI_INFORMACE/01_PROVOZNI_DOBY",
+        "05_PROVOZNI_INFORMACE/02_OBSAZENOST_A_VYUZITI",
+        "05_PROVOZNI_INFORMACE/03_STIZNOSTI_A_PROVOZNI_PROBLEMY",
+        "05_PROVOZNI_INFORMACE/04_PLANOVANE_ZMENY_A_REKONSTRUKCE",
+
+        "06_EXISTUJICI_OPATRENI_A_ZAVAZKY",
+        "06_EXISTUJICI_OPATRENI_A_ZAVAZKY/01_REALIZOVANA_OPATRENI",
+        "06_EXISTUJICI_OPATRENI_A_ZAVAZKY/02_ENERGETICKA_POLITIKA_A_CILE",
+        "06_EXISTUJICI_OPATRENI_A_ZAVAZKY/03_LEGISLATIVNI_A_INTERNI_ZAVAZKY",
+
+        "07_INVESTICE_FINANCE_A_VZ",
+        "07_INVESTICE_FINANCE_A_VZ/01_HISTORIE_INVESTIC",
+        "07_INVESTICE_FINANCE_A_VZ/02_ROZPOCTOVE_RAMCE",
+        "07_INVESTICE_FINANCE_A_VZ/03_METODIKA_HODNOCENI",
+        "07_INVESTICE_FINANCE_A_VZ/05_VEREJNE_ZAKAZKY_A_POSTUPY",
+
+        "08_DOTACE_A_PROGRAMY",
+        "08_DOTACE_A_PROGRAMY/01_PREFEROVANE_PROGRAMY",
+        "08_DOTACE_A_PROGRAMY/02_PODMINKY_A_POZADAVKY",
+        "08_DOTACE_A_PROGRAMY/03_ROZPRACOVANE_A_PODANE_ZADOSTI",
+
+        "09_OMEZENI_A_BEZPECNOST",
+        "09_OMEZENI_A_BEZPECNOST/01_MAJETKOPRAVNI_VZTAHY",
+        "09_OMEZENI_A_BEZPECNOST/02_PAMATKOVA_OCHRANA",
+        "09_OMEZENI_A_BEZPECNOST/03_POZARNI_OMEZENI",
+        "09_OMEZENI_A_BEZPECNOST/04_PRISTUP_DO_OBJEKTU_A_BOZP",
+
+        "99_ARCHIV_NEZARAZENO",
+        "99_ARCHIV_NEZARAZENO/01_K_TRIDENI",
+        "99_ARCHIV_NEZARAZENO/02_ARCHIV_PUVODNIHO_DODANI"
+      ],
+      "folder_readmes": [
+        {
+          "folder": "00_ADMIN_A_ORGANIZACE",
+          "description": "Dokumenty vysvětlující rámec zakázky, zadání, kontakty, cíle a organizační pravidla.",
+          "examples": ["zadání zakázky", "kontaktní list", "zápis z úvodního jednání"]
+        },
+        {
+          "folder": "01_SEZNAM_OBJEKTU_A_PASPORT",
+          "description": "Základní přehled objektů, pasporty, PENB a fotodokumentace.",
+          "examples": ["PREHLED_OBJEKTU.xlsx", "pasport objektu", "PENB", "fotodokumentace"]
+        },
+        {
+          "folder": "02_ENERGETICKA_DATA",
+          "description": "Podklady k odběru a fakturaci energií a vody, včetně profilů a mapování odběrných míst.",
+          "examples": ["faktury elektřiny", "EAN/EIC", "15min profily", "PREHLED_FAKTURACE.xlsx"]
+        },
+        {
+          "folder": "03_TECHNICKE_PODKLADY_BUDOVY",
+          "description": "Stavební a projektové podklady k objektům, obálce budovy a střechám.",
+          "examples": ["projektová dokumentace", "řezy a půdorysy", "informace o zateplení", "podklady ke střeše"]
+        },
+        {
+          "folder": "04_TECHNICKE_PODKLADY_TZB",
+          "description": "Technické podklady k TZB: vytápění, VZT, chlazení, osvětlení, TUV a MaR.",
+          "examples": ["schéma kotelny", "technické listy VZT", "servisní protokoly", "exporty z MaR"]
+        },
+        {
+          "folder": "05_PROVOZNI_INFORMACE",
+          "description": "Informace o skutečném provozu budov a jejich užívání.",
+          "examples": ["provozní doby", "obsazenost", "stížnosti uživatelů", "plánované změny"]
+        },
+        {
+          "folder": "06_EXISTUJICI_OPATRENI_A_ZAVAZKY",
+          "description": "Přehled realizovaných opatření a interních či legislativních závazků.",
+          "examples": ["realizovaná opatření", "energetická politika", "interní závazky"]
+        },
+        {
+          "folder": "07_INVESTICE_FINANCE_A_VZ",
+          "description": "Podklady k investicím, ekonomice a veřejným zakázkám.",
+          "examples": ["historie investic", "rozpočtové rámce", "metodika hodnocení", "pravidla VZ"]
+        },
+        {
+          "folder": "08_DOTACE_A_PROGRAMY",
+          "description": "Dotační tituly, podmínky programů a stav žádostí.",
+          "examples": ["přehled programů", "podmínky výzvy", "rozpracovaná žádost"]
+        },
+        {
+          "folder": "09_OMEZENI_A_BEZPECNOST",
+          "description": "Podklady, které mohou omezit nebo podmínit navrhovaná opatření.",
+          "examples": ["majetkoprávní vztahy", "památková ochrana", "požární omezení", "přístup do objektu"]
+        }
+      ],
+      "overview_columns": [
+        "01_01_Centralni_seznam_objektu",
+        "01_02_Pasporty_objektu",
+        "01_03_PENB_a_stitky",
+        "01_04_Fotodokumentace",
+        "02_01_01_Elektrina_faktury",
+        "02_01_02_Elektrina_smlouvy_a_ceniky",
+        "02_01_03_Elektrina_15min_profily",
+        "02_01_04_Elektrina_EAN_a_parametry",
+        "02_02_01_Plyn_faktury",
+        "02_02_02_Plyn_smlouvy_a_parametry",
+        "02_02_03_Plyn_profily_a_odecty",
+        "02_03_01_Teplo_CZT_faktury",
+        "02_03_02_Teplo_CZT_smluvni_parametry",
+        "02_03_03_Teplo_CZT_profily_odberu",
+        "02_03_04_Teplo_CZT_predavaci_stanice",
+        "02_04_01_Voda_faktury",
+        "02_04_02_Voda_mereni_TUV_a_cirkulace",
+        "02_04_03_Voda_uniky_a_problemy",
+        "03_01_Projektova_dokumentace",
+        "03_02_01_Fasady_a_zatepleni",
+        "03_02_02_Okna_a_dvere",
+        "03_02_03_Strechy",
+        "03_02_04_Stavebni_stav_a_poruchy",
+        "03_03_FVE_potencial_strech",
+        "04_01_01_Vytapeni_zdroje",
+        "04_01_02_Vytapeni_schemata",
+        "04_01_03_Vytapeni_regulace",
+        "04_01_04_Vytapeni_servis_a_revize",
+        "04_02_01_Vetrani_klimatizace_chlazeni_seznam_zarizeni",
+        "04_02_02_Vetrani_klimatizace_chlazeni_technicke_listy",
+        "04_02_03_Vetrani_klimatizace_chlazeni_servis_a_revize",
+        "04_02_04_Vetrani_klimatizace_chlazeni_provozni_problemy",
+        "04_03_01_Osvetleni_prehled_svitidel",
+        "04_03_02_Osvetleni_rizeni",
+        "04_03_03_Osvetleni_velke_spotreby",
+        "04_04_01_TUV_zdroje_a_zasobniky",
+        "04_04_02_TUV_cirkulace",
+        "04_04_03_TUV_provozni_rezimy",
+        "04_05_01_MaR_popis_systemu",
+        "04_05_02_MaR_exporty_a_trendy",
+        "04_05_03_MaR_seznam_merenych_velicin",
+        "04_05_04_MaR_pristupy_a_odpovedne_osoby",
+        "05_01_Provozni_doby",
+        "05_02_Obsazenost_a_vyuziti",
+        "05_03_Stiznosti_a_provozni_problemy",
+        "05_04_Planovane_zmeny_a_rekonstrukce",
+        "06_01_Realizovana_opatreni",
+        "06_02_Energeticka_politika_a_cile",
+        "06_03_Legislativni_a_interni_zavazky",
+        "07_01_Historie_investic",
+        "07_02_Rozpoctove_ramce",
+        "07_03_Metodika_hodnoceni",
+        "07_05_Verejne_zakazky_a_postupy",
+        "08_01_Preferovane_programy",
+        "08_02_Podminky_a_pozadavky",
+        "08_03_Rozpracovane_a_podane_zadosti",
+        "09_01_Majetkopravni_vztahy",
+        "09_02_Pamatkova_ochrana",
+        "09_03_Pozarni_omezeni",
+        "09_04_Pristup_do_objektu_a_BOZP"
+      ],
+      "checklist_items": [
+        {
+          "Sekce": "00_ADMIN_A_ORGANIZACE",
+          "Kod_polozky": "00.01",
+          "Podslozka": "01_ZADANI_A_ROZSAH_AUDITU",
+          "Pozadovany_podklad": "Zadání a rozsah zakázky",
+          "Popis_co_se_ocekava": "Zadání projektu nebo objednávka včetně vymezení rozsahu a požadovaného výstupu.",
+          "Vazba_na_objekt": "Ne",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "00_ADMIN_A_ORGANIZACE",
+          "Kod_polozky": "00.02",
+          "Podslozka": "02_KONTAKTY_A_KOMPETENCE",
+          "Pozadovany_podklad": "Kontaktní osoby a role",
+          "Popis_co_se_ocekava": "Seznam kontaktních osob za klienta a jejich role v rámci projektu.",
+          "Vazba_na_objekt": "Ne",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "01_SEZNAM_OBJEKTU_A_PASPORT",
+          "Kod_polozky": "01.01",
+          "Podslozka": "01_CENTRALNI_SEZNAM_OBJEKTU",
+          "Pozadovany_podklad": "Přehled objektů",
+          "Popis_co_se_ocekava": "Vyplněný soubor PREHLED_OBJEKTU.xlsx se základní identifikací objektů.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "01_SEZNAM_OBJEKTU_A_PASPORT",
+          "Kod_polozky": "01.02",
+          "Podslozka": "02_PASPORTY_OBJEKTU",
+          "Pozadovany_podklad": "Základní pasport objektů",
+          "Popis_co_se_ocekava": "Funkce objektu, rok výstavby, rok rekonstrukce, plošné údaje a základní popis stavu.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "02_ENERGETICKA_DATA",
+          "Kod_polozky": "02.01",
+          "Podslozka": "01_ELEKTRINA/01_FAKTURY",
+          "Pozadovany_podklad": "Faktury elektřiny",
+          "Popis_co_se_ocekava": "Faktury za elektřinu po jednotlivých odběrných místech nebo objektech.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "02_ENERGETICKA_DATA",
+          "Kod_polozky": "02.02",
+          "Podslozka": "01_ELEKTRINA/03_PROFILY_15MIN",
+          "Pozadovany_podklad": "Patnáctiminutové profily elektřiny",
+          "Popis_co_se_ocekava": "Průběhová data spotřeby zejména pro hlavní odběry.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "02_ENERGETICKA_DATA",
+          "Kod_polozky": "02.03",
+          "Podslozka": "05_CENTRALNI_PREHLEDY",
+          "Pozadovany_podklad": "Mapování objekt–odběrné místo",
+          "Popis_co_se_ocekava": "Vyplněný soubor MAPOVANI_OBJEKT_ODBERNE_MISTO.xlsx.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "03_TECHNICKE_PODKLADY_BUDOVY",
+          "Kod_polozky": "03.01",
+          "Podslozka": "01_PROJEKTOVA_DOKUMENTACE",
+          "Pozadovany_podklad": "Projektová dokumentace",
+          "Popis_co_se_ocekava": "Projektová dokumentace, technické zprávy, půdorysy, řezy a pohledy.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "03_TECHNICKE_PODKLADY_BUDOVY",
+          "Kod_polozky": "03.02",
+          "Podslozka": "02_OBALKA_BUDOVY/01_FASADY_A_ZATEPLENI",
+          "Pozadovany_podklad": "Fasády a zateplení",
+          "Popis_co_se_ocekava": "Informace o zateplení, skladbách, roku realizace a rozsahu.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "04_TECHNICKE_PODKLADY_TZB",
+          "Kod_polozky": "04.01",
+          "Podslozka": "01_VYTAPENI/01_ZDROJE",
+          "Pozadovany_podklad": "Vytápění – zdroje",
+          "Popis_co_se_ocekava": "Typ zdroje, výkon, stáří a režim provozu.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "04_TECHNICKE_PODKLADY_TZB",
+          "Kod_polozky": "04.02",
+          "Podslozka": "02_VETRANI_KLIMATIZACE_CHLAZENI/01_SEZNAM_ZARIZENI",
+          "Pozadovany_podklad": "Seznam VZT a chladicích zařízení",
+          "Popis_co_se_ocekava": "Seznam jednotek, výkony, stáří a provozní režim.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "05_PROVOZNI_INFORMACE",
+          "Kod_polozky": "05.01",
+          "Podslozka": "01_PROVOZNI_DOBY",
+          "Pozadovany_podklad": "Provozní doby",
+          "Popis_co_se_ocekava": "Pracovní dny, víkendy, směny a sezónní provoz.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "05_PROVOZNI_INFORMACE",
+          "Kod_polozky": "05.02",
+          "Podslozka": "02_OBSAZENOST_A_VYUZITI",
+          "Pozadovany_podklad": "Obsazenost a využití",
+          "Popis_co_se_ocekava": "Počet uživatelů, způsob využití a sezónní výkyvy.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "06_EXISTUJICI_OPATRENI_A_ZAVAZKY",
+          "Kod_polozky": "06.01",
+          "Podslozka": "01_REALIZOVANA_OPATRENI",
+          "Pozadovany_podklad": "Realizovaná opatření",
+          "Popis_co_se_ocekava": "Přehled již realizovaných úsporných opatření včetně roku a základního popisu.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Střední",
+          "default_selected": true
+        },
+        {
+          "Sekce": "07_INVESTICE_FINANCE_A_VZ",
+          "Kod_polozky": "07.01",
+          "Podslozka": "02_ROZPOCTOVE_RAMCE",
+          "Pozadovany_podklad": "Rozpočtové rámce",
+          "Popis_co_se_ocekava": "Investiční limity, CAPEX/OPEX a běžný finanční rámec.",
+          "Vazba_na_objekt": "Částečně",
+          "Priorita": "Vysoká",
+          "default_selected": true
+        },
+        {
+          "Sekce": "07_INVESTICE_FINANCE_A_VZ",
+          "Kod_polozky": "07.02",
+          "Podslozka": "05_VEREJNE_ZAKAZKY_A_POSTUPY",
+          "Pozadovany_podklad": "Veřejné zakázky a postupy",
+          "Popis_co_se_ocekava": "Pravidla veřejných zakázek, schvalovací postup a časové nároky přípravy.",
+          "Vazba_na_objekt": "Ne",
+          "Priorita": "Střední",
+          "default_selected": true
+        },
+        {
+          "Sekce": "08_DOTACE_A_PROGRAMY",
+          "Kod_polozky": "08.01",
+          "Podslozka": "01_PREFEROVANE_PROGRAMY",
+          "Pozadovany_podklad": "Preferované programy",
+          "Popis_co_se_ocekava": "Přehled relevantních nebo preferovaných dotačních programů.",
+          "Vazba_na_objekt": "Částečně",
+          "Priorita": "Střední",
+          "default_selected": true
+        },
+        {
+          "Sekce": "09_OMEZENI_A_BEZPECNOST",
+          "Kod_polozky": "09.01",
+          "Podslozka": "01_MAJETKOPRAVNI_VZTAHY",
+          "Pozadovany_podklad": "Majetkoprávní vztahy",
+          "Popis_co_se_ocekava": "Vlastnictví, nájem, správa a sdílené objekty.",
+          "Vazba_na_objekt": "Ano",
+          "Priorita": "Střední",
+          "default_selected": true
+        }
+      ]
+    },
+
+    "Plán energetického auditu": {
+      "copy_from": "Energetický audit",
+      "code": "A1_PLAN_ENERGETICKEHO_AUDITU",
+      "variant": "A1"
+    },
+
+    "Studie potenciálu energetických úspor": {
+      "copy_from": "Energetický audit",
+      "code": "A1_STUDIE_POTENCIALU_USPOR",
+      "variant": "A1"
+    },
+
+    "Energetický posudek": {
+      "copy_from": "Energetický audit",
+      "code": "A2_ENERGETICKY_POSUDEK",
+      "variant": "A2"
+    },
+
+    "Pasportizace objektu": {
+      "copy_from": "Energetický audit",
+      "code": "A2_PASPORTIZACE_OBJEKTU",
+      "variant": "A2"
+    },
+
+    "Studie stavebnětechnologického řešení": {
+      "copy_from": "Energetický audit",
+      "code": "A2_STUDIE_STAVEBNETECHNOLOGICKEHO_RESENI",
+      "variant": "A2"
+    },
+
+    "Průkaz energetické náročnosti budovy": {
+      "copy_from": "Energetický audit",
+      "code": "A3_PENB",
+      "variant": "A3"
+    }
+  }
+}
